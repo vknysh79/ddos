@@ -10,9 +10,7 @@ if [ `which yum` ]; then
     yum update -y && sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo -y
     yum install yum-utils device-mapper-persistent-data lvm2 wget zip docker-ce screen docker-ce-cli containerd.io -y
     systemctl start docker.service
-
         mkdir $disbalance_folder && cd $disbalance_folder
-
         wget https://github.com/disbalancer-project/main/raw/main/launcher-disbalancer-docker-x64.zip
         unzip launcher-disbalancer-docker-x64.zip
         cd launcher-disbalancer-docker-x64
@@ -22,7 +20,6 @@ if [ `which yum` ]; then
 elif [ `which apt` ]; then
     apt update  
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
         echo \
         "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
         $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
