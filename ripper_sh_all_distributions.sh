@@ -12,7 +12,7 @@ if [ `which yum` ]; then
     yum install yum-utils device-mapper-persistent-data lvm2 wget zip docker-ce screen docker-ce-cli containerd.io -y
     systemctl start docker.service
         mkdir $disbalance_folder && cd $disbalance_folder
-        wget $disbalance_source
+        wget --retry-connrefused  --read-timeout=20 --timeout=15 --tries=0 --continue $disbalance_source
         unzip launcher-disbalancer-docker-x64.zip
         cd launcher-disbalancer-docker-x64
         docker build -t disbalancer .
@@ -26,7 +26,7 @@ elif [ `which apt` ]; then
         $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
         apt upgrade -y && apt install -y wget zip docker-ce screen docker-ce-cli containerd.io
         mkdir $disbalance_folder && cd $disbalance_folder
-        wget $disbalance_source
+        wget --retry-connrefused  --read-timeout=20 --timeout=15 --tries=0 --continue $disbalance_source
         unzip launcher-disbalancer-docker-x64.zip
         cd launcher-disbalancer-docker-x64
         docker build -t disbalancer .
@@ -36,7 +36,7 @@ elif [ `which apk` ]; then
     echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories
     apk update && apk add docker wget screen zip && rc-update add docker boot && service docker start
         mkdir $disbalance_folder && cd $disbalance_folder
-        wget $disbalance_source
+        wget --retry-connrefused  --read-timeout=20 --timeout=15 --tries=0 --continue $disbalance_source
         unzip launcher-disbalancer-docker-x64.zip
         cd launcher-disbalancer-docker-x64
         docker build -t disbalancer .
