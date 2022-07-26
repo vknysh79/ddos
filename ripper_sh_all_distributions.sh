@@ -3,6 +3,8 @@
 disbalance_folder="/tmp/disbalance"
 disbalance_source="https://github.com/disbalancer-project/main/raw/main/launcher-disbalancer-docker-x64.zip"
 
+# Checjk if you're root
+
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit
